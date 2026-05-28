@@ -76,7 +76,7 @@ async function applyGeofences(): Promise<void> {
 }
 
 export async function startBackgroundTracking(): Promise<
-  { ok: true } | { ok: false; reason: string }
+  { ok: true; checkedInImmediately: boolean } | { ok: false; reason: string }
 > {
   await cleanupLegacyTask();
   const fg = await Location.requestForegroundPermissionsAsync();
@@ -97,7 +97,36 @@ export async function startBackgroundTracking(): Promise<
   }
   await applyGeofences();
   await setTrackingEnabled(true);
-  return { ok: true };
+  // Geofencing only fires on enter/exit transitions. If the user activates
+  // tracking while already inside an office, do a one-shot location read
+  // and record the visit immediately so they don't have to leave and
+  // come back to register the day.
+  const checkedInImmediately = await recordPresentLocationIfInside();
+  return { ok: true, checkedInImmediately };
+}
+
+async function recordPresentLocationIfInside(): Promise<boolean> {
+  try {
+    const offices = await getOffices();
+    if (!offices.length) return false;
+    const loc = await Location.getCurrentPositionAsync({
+      accuracy: Location.Accuracy.Balanced,
+    });
+    const here = { latitude: loc.coords.latitude, longitude: loc.coords.longitude };
+    for (const office of offices) {
+      const d = distanceMeters(here, {
+        latitude: office.latitude,
+        longitude: office.longitude,
+      });
+      if (d <= office.radiusMeters) {
+        await recordVisitToday('auto', { id: office.id, name: office.name });
+        return true;
+      }
+    }
+    return false;
+  } catch {
+    return false;
+  }
 }
 
 export async function stopBackgroundTracking(): Promise<void> {

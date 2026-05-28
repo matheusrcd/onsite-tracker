@@ -43,9 +43,10 @@ revogando a permissão em Ajustes do sistema.
   automaticamente sua chegada aos locais cadastrados. Sem esta
   permissão, o check-in automático não funciona; o check-in manual
   continua funcionando com a permissão "Durante o uso do app".
-- **Serviço em primeiro plano (Android)**: usado para manter o
-  rastreamento ativo de forma transparente, com uma notificação
-  persistente conforme exigido pelo Android.
+- **Region monitoring (geofencing)**: o app registra cada local
+  cadastrado como uma "região" no sistema (até 3). O sistema operacional
+  só acorda o app quando você cruza a borda dessa região — nada de
+  monitoramento contínuo, nada de notificação persistente.
 
 ## Compartilhamento com terceiros
 

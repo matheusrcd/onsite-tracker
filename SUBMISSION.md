@@ -96,20 +96,35 @@ Depois do upload:
 ## 8. Pontos sensíveis durante review
 
 ### App Store
-- **Background location**: é o item que mais reprova apps. Na
-  descrição da app e no campo "Review notes", deixe claro que:
-  1. O usuário cadastra explicitamente os locais.
-  2. A localização nunca sai do dispositivo.
-  3. O usuário pode desligar o tracking a qualquer momento.
+- **Background location**: é o item que mais reprova apps, mas o
+  Presenciei usa **region monitoring (geofencing)** em vez de
+  streaming contínuo de localização — é a primitiva que a Apple
+  *prefere* pra esse caso de uso ("acordar ao chegar em um local
+  conhecido"). Bateria praticamente zero e intenção bem definida.
+  Na descrição e no campo "Review notes", deixe claro:
+  1. O usuário cadastra explicitamente cada local (até 3).
+  2. Os locais viram `CLCircularRegion` no iOS; nada de dados sai
+     do dispositivo.
+  3. O usuário pode desligar a qualquer momento pelo toggle
+     "Rastreamento em segundo plano" na tela inicial.
+  4. Sem permissão de background, o app degrada graciosamente para
+     check-in manual.
   Inclua um vídeo curto mostrando o fluxo se possível.
-- Garantir que o app **funciona** sem permissão de background
-  (degradação para check-in manual) — o reviewer vai testar.
 
 ### Google Play
-- O formulário de **"Prominent Disclosure"** para background location
-  exige um diálogo no app explicando o uso *antes* de pedir a permissão.
-  Atualmente o app pede direto via `requestBackgroundPermissionsAsync`;
-  se o Play recusar, adicione um modal explicativo antes da chamada.
+- **Prominent Disclosure**: implementado em
+  `src/screens/TodayScreen.tsx` — antes de chamar
+  `requestBackgroundPermissionsAsync`, mostramos um Alert com o
+  texto exigido pelo Google ("usaremos sua localização inclusive
+  quando o app estiver fechado, apenas para detectar chegada nos
+  escritórios cadastrados, nada sai do dispositivo, você pode
+  desativar a qualquer momento") com os botões "Agora não" /
+  "Permitir". Só seguimos pra permissão do sistema se o usuário
+  optar por "Permitir".
+- **Foreground service**: não usamos. Geofencing via Play Services
+  cuida disso sem serviço em primeiro plano, então o app não pede
+  `FOREGROUND_SERVICE`/`FOREGROUND_SERVICE_LOCATION`. Menor surface
+  de permissões = review mais tranquilo.
 - O **Data Safety** form precisa estar exatamente alinhado ao que o
   app faz. Como não coletamos nada, marque tudo como "Not collected".
 
