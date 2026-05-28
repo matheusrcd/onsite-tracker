@@ -103,18 +103,28 @@ ser hospedada em URL pública antes da submissão).
 
 ## Como o tracking funciona
 
-`src/tracking.ts` registra um único background task com
-`expo-task-manager`. A cada atualização de localização do
-`expo-location`, ele:
+`src/tracking.ts` usa **region monitoring nativo** (`expo-location` →
+`startGeofencingAsync`) e não streaming contínuo de localização. Cada
+escritório cadastrado vira uma região circular registrada com o OS:
 
-1. Lê a lista de escritórios cadastrados.
-2. Calcula distância Haversine para cada um.
-3. Se algum estiver dentro do raio, registra um visit com a `officeName`
-   (uma vez por dia).
+- **iOS**: mapeia para `CLCircularRegion`. O SO acorda o app no enter,
+  o consumo de bateria é praticamente zero, e as regiões **persistem
+  através de force-quit e reboot**. Limite de 20 regiões por app
+  (usamos no máximo 3).
+- **Android**: usa a Geofencing API do Google Play Services. Igual em
+  comportamento, mas as regiões são **descartadas no reboot do
+  dispositivo** — por isso o `App.tsx` chama `syncGeofences()` a cada
+  refresh, re-registrando o conjunto atual de escritórios.
 
-O usuário liga e desliga isso no toggle "Rastreamento em segundo plano"
-da tela inicial. No Android, um foreground service mantém o tracking
-ativo com uma notificação persistente — exigido pelo OS.
+Quando o task dispara (`GeofencingEventType.Enter`), o handler:
+
+1. Identifica qual escritório corresponde à `region.identifier`.
+2. Registra um visit do dia (`recordVisitToday('auto', { officeName })`).
+
+O usuário liga e desliga tudo isso pelo toggle "Rastreamento em
+segundo plano" na tela inicial. O check-in manual (botão grande no
+"Hoje") continua usando uma leitura única de localização +
+distância Haversine — independente do geofence.
 
 ## Privacidade
 

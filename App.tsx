@@ -15,7 +15,7 @@ import {
   getVisits,
   getTrackingEnabled,
 } from './src/storage';
-import { isTrackingRunning } from './src/tracking';
+import { isTrackingRunning, syncGeofences } from './src/tracking';
 import { TabBar, TabKey } from './src/ui/TabBar';
 import { TodayScreen } from './src/screens/TodayScreen';
 import { HistoryScreen } from './src/screens/HistoryScreen';
@@ -46,6 +46,10 @@ export default function App() {
     setGoals(g);
     setTracking(t && running);
     setReady(true);
+    // Re-register geofences with the current office set. Covers office
+    // edits (clobbers previous regions) and Android reboot (Play Services
+    // drops geofences on reboot — iOS persists them, so this is a no-op there).
+    syncGeofences().catch(() => undefined);
   }, []);
 
   useEffect(() => {

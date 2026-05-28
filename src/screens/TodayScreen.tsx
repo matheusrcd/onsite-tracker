@@ -94,12 +94,33 @@ export function TodayScreen({
           );
           return;
         }
+        // Prominent disclosure required by Google Play before requesting
+        // ACCESS_BACKGROUND_LOCATION. Shown ahead of the system prompt with
+        // a clear opt-in.
+        const consent = await new Promise<boolean>((resolve) => {
+          Alert.alert(
+            'Permitir rastreamento em segundo plano?',
+            'O Presenciei vai usar sua localização — inclusive quando o app estiver fechado ou em segundo plano — apenas para detectar quando você chega em um dos escritórios cadastrados.\n\nNada sai do seu dispositivo. Você pode desativar a qualquer momento neste mesmo botão.',
+            [
+              { text: 'Agora não', style: 'cancel', onPress: () => resolve(false) },
+              { text: 'Permitir', onPress: () => resolve(true) },
+            ],
+            { cancelable: false },
+          );
+        });
+        if (!consent) return;
         const result = await startBackgroundTracking();
         if (!result.ok) {
           Alert.alert('Rastreamento não ativado', result.reason, [
             { text: 'OK' },
             { text: 'Abrir Ajustes', onPress: () => Linking.openSettings() },
           ]);
+        } else if (result.checkedInImmediately) {
+          await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          Alert.alert(
+            'Rastreamento ativado',
+            'Você já estava em um dos escritórios — seu check-in de hoje foi registrado.',
+          );
         }
       } else {
         await stopBackgroundTracking();
