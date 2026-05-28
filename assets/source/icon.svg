@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Full-bleed orange tile. iOS applies the rounded mask; Android adaptive
+       background covers this with `android-icon-background.png`. -->
+  <rect width="1024" height="1024" fill="#EC7000"/>
+
+  <!-- Subtle inner radial highlight for depth -->
+  <defs>
+    <radialGradient id="hi" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#hi)"/>
+
+  <!-- Location pin in white, with a blue check inside -->
+  <!-- Pin path: teardrop ~ Material/Apple style, vertically centered with a bit of breathing -->
+  <g transform="translate(512 512)">
+    <!-- pin body -->
+    <path d="
+        M 0 -260
+        C 142 -260 254 -148 254 -6
+        C 254 142 110 270 0 380
+        C -110 270 -254 142 -254 -6
+        C -254 -148 -142 -260 0 -260 Z"
+      fill="#FFFFFF"/>
+    <!-- inner blue check disc -->
+    <circle r="138" cx="0" cy="-14" fill="#003087"/>
+    <!-- check mark -->
+    <path d="M -66 -14 L -16 38 L 70 -54"
+          stroke="#FFFFFF" stroke-width="32"
+          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>

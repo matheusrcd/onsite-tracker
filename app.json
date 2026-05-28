@@ -1,0 +1,79 @@
+{
+  "expo": {
+    "name": "Presenciei",
+    "slug": "presenciei",
+    "scheme": "presenciei",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "primaryColor": "#EC7000",
+    "backgroundColor": "#FFFFFF",
+    "description": "Presenciei conta seus dias no escritório automaticamente, por geolocalização. Cadastre até 3 locais, defina suas metas semanais e mensais, e acompanhe seu histórico.",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.presenciei.app",
+      "buildNumber": "1",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ],
+        "NSLocationWhenInUseUsageDescription": "Usamos sua localização para identificar quando você chega ao escritório e contar o dia automaticamente.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "O acesso em segundo plano permite registrar dias no escritório automaticamente — sem precisar abrir o app.",
+        "NSLocationAlwaysUsageDescription": "O acesso em segundo plano permite registrar dias no escritório automaticamente — sem precisar abrir o app.",
+        "CFBundleLocalizations": [
+          "pt-BR",
+          "en"
+        ],
+        "CFBundleDevelopmentRegion": "pt-BR"
+      }
+    },
+    "android": {
+      "package": "com.presenciei.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#EC7000",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION"
+      ],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "O Presenciei usa sua localização para registrar dias no escritório, inclusive em segundo plano.",
+          "locationWhenInUsePermission": "Usamos sua localização para identificar quando você chega ao escritório.",
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true
+        }
+      ]
+    ],
+    "owner": "matheusrcd",
+    "extra": {
+      "eas": {
+        "projectId": "7e8a49e9-a1fe-4384-b38c-080ea7bde7c9"
+      }
+    }
+  }
+}
