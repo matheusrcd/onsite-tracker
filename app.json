@@ -12,7 +12,7 @@
     "description": "Presenciei conta seus dias no escritório automaticamente, por geolocalização. Cadastre até 3 locais, defina suas metas semanais e mensais, e acompanhe seu histórico.",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.presenciei.app",
+      "bundleIdentifier": "com.matheusrcd.presenciei",
       "buildNumber": "1",
       "config": {
         "usesNonExemptEncryption": false
@@ -33,7 +33,7 @@
       }
     },
     "android": {
-      "package": "com.presenciei.app",
+      "package": "com.matheusrcd.presenciei",
       "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#EC7000",
