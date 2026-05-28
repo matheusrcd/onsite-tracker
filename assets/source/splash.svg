@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Splash mark on transparent background; Expo composites on the
+       configured backgroundColor. -->
+  <g transform="translate(512 512) scale(0.85)">
+    <path d="
+        M 0 -260
+        C 142 -260 254 -148 254 -6
+        C 254 142 110 270 0 380
+        C -110 270 -254 142 -254 -6
+        C -254 -148 -142 -260 0 -260 Z"
+      fill="#EC7000"/>
+    <circle r="138" cx="0" cy="-14" fill="#FFFFFF"/>
+    <path d="M -66 -14 L -16 38 L 70 -54"
+          stroke="#EC7000" stroke-width="32"
+          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>

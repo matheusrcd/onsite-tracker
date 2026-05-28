@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Single-color silhouette for Android themed icons.
+       Android tints this at render time; we keep it solid #000. -->
+  <g transform="translate(512 512) scale(0.7)">
+    <path d="
+        M 0 -260
+        C 142 -260 254 -148 254 -6
+        C 254 142 110 270 0 380
+        C -110 270 -254 142 -254 -6
+        C -254 -148 -142 -260 0 -260
+        M 0 -148
+        C -78 -148 -140 -86 -140 -8
+        C -140 70 -78 132 0 132
+        C 78 132 140 70 140 -8
+        C 140 -86 78 -148 0 -148 Z"
+      fill="#000000" fill-rule="evenodd"/>
+  </g>
+</svg>
