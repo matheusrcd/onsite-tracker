@@ -24,6 +24,7 @@
     "web": "expo start --web",
     "assets": "node scripts/generate-assets.mjs",
     "screenshots": "node scripts/prepare-screenshots.mjs",
+    "promo": "node scripts/prepare-promo-screenshots.mjs",
     "typecheck": "tsc --noEmit",
     "doctor": "expo-doctor",
     "build:ios": "eas build --platform ios --profile production",

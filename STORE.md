@@ -127,26 +127,44 @@ na tela inicial.
 
 ## Capturas de tela
 
-Tamanhos mínimos exigidos:
+Tudo o que você precisa subir já tá renderizado em `assets/screenshots/`:
 
-- **iPhone 6.7" / 6.9"** (iPhone 15/16 Pro Max): 1290×2796 — 3 a 10 imagens
-- **iPhone 6.5" (legado)**: 1242×2688 — opcional se já tiver 6.7"
-- **iPad 13"**: 2064×2752 — só se marcar "supportsTablet" (já marcamos)
+```
+assets/screenshots/
+├── source/                  ← capturas originais do iPhone 13 (1170×2532)
+├── iphone-6.7/              ← versões "puras" 1290×2796 (sem legenda)
+├── iphone-6.5/              ← versões "puras" 1242×2688
+├── promo-iphone-6.7/        ← com legenda em pt-BR (recomendado)
+└── promo-iphone-6.5/        ← idem para 6.5"
+```
+
+**Use os `promo-iphone-6.7/` na submissão** — tem o headline +
+subtítulo já compostos por cima, o que melhora a taxa de instalação
+significativamente. As versões "puras" servem como fallback ou se a
+Apple pedir captura sem marketing copy.
+
+Tamanhos exigidos:
+
+- **iPhone 6.7" / 6.9"** (iPhone 15/16 Pro Max): 1290×2796 — 3 a 10 imagens ✅
+- **iPhone 6.5" (legado)**: 1242×2688 — opcional se já tiver 6.7" ✅
+- **iPad 13"**: 2064×2752 — só se marcar "supportsTablet" (não usamos)
 - **Android Phone**: 1080×1920 ou maior — mínimo 2, máximo 8
 - **Android 7" Tablet / 10" Tablet**: opcional
 
-Conteúdo sugerido (uma tela por capture, com legenda em pt-BR):
+Ordem sugerida pra App Store Connect:
 
-1. "Hoje" com botão de check-in e meta da semana visível
-2. Setup mostrando 3 locais cadastrados
-3. Histórico com calendário do mês destacado
-4. Meta com badge "Meta batida"
-5. Tela de adicionar check-in manual
+1. `01-hoje.png` — _"Marque seus dias presenciais — Automaticamente, sem precisar abrir o app."_
+2. `02-escritorios.png` — _"Até 3 locais de trabalho — Escritório, filial, casa do cliente."_
+3. `03-metas.png` — _"Defina sua meta — Veja seu progresso na semana e no mês."_
+4. `04-historico.png` — _"Tudo no calendário — Adicione ou remova qualquer dia."_
 
-Use o simulador (`npm run ios` / `npm run android`) com o frame de
-status realista, ou rode em device físico e use o Screenshot do iOS
-/ Android. Para os mockups com chrome do dispositivo, ferramentas
-como [previewed.app](https://previewed.app) ou Figma resolvem.
+Pra atualizar legendas/imagens depois:
+
+1. Substitua/adicione PNGs em `assets/screenshots/source/` (qualquer
+   tamanho — o script preserva proporção)
+2. Edite os captions em `scripts/prepare-promo-screenshots.mjs` (array
+   `promos`)
+3. `npm run screenshots && npm run promo` regenera tudo
 
 ## Ícone das lojas
 
