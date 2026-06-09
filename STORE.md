@@ -135,7 +135,9 @@ assets/screenshots/
 ├── iphone-6.7/              ← versões "puras" 1290×2796 (sem legenda)
 ├── iphone-6.5/              ← versões "puras" 1242×2688
 ├── promo-iphone-6.7/        ← com legenda em pt-BR (recomendado)
-└── promo-iphone-6.5/        ← idem para 6.5"
+├── promo-iphone-6.5/        ← idem para 6.5"
+├── promo-ipad-13/           ← iPad 13" 2064×2752 (exigido c/ supportsTablet)
+└── promo-ipad-12.9/         ← iPad 12.9" 2048×2732 (legado, opcional)
 ```
 
 **Use os `promo-iphone-6.7/` na submissão** — tem o headline +

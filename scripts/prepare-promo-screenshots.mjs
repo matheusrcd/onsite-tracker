@@ -62,6 +62,29 @@ const targets = [
     accentY: 663,
     ssY: 730,
   },
+  {
+    // App Store Connect "iPad 13" Display" slot. The screenshot is
+    // letterboxed to a phone aspect ratio centered on the canvas —
+    // honest representation of an iPhone-only UI installed on iPad.
+    name: 'promo-ipad-13', w: 2064, h: 2752,
+    margin: 160,
+    headlineSize: 134, headlineLineHeight: 154,
+    subtitleSize: 58,
+    headlineY: 440, subtitleY: 820,
+    accentY: 900,
+    ssY: 990,
+  },
+  {
+    // Legacy "iPad 12.9" Display" slot — same content, slightly
+    // different canvas. Optional, kept for completeness.
+    name: 'promo-ipad-12.9', w: 2048, h: 2732,
+    margin: 158,
+    headlineSize: 132, headlineLineHeight: 152,
+    subtitleSize: 56,
+    headlineY: 436, subtitleY: 814,
+    accentY: 894,
+    ssY: 984,
+  },
 ];
 
 const SCREENSHOT_BOTTOM_MARGIN = 70;
