@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#EC7000">
   <title>Presenciei — conte seus dias no escritório</title>
-  <meta name="description" content="Presenciei é um app simples e elegante para quem trabalha em modelo híbrido. Cadastre seus locais, defina sua meta e marque presença automaticamente.">
+  <meta name="description" content="App simples para hybrid workers. Cadastre seus locais e marque presença automaticamente, em segundo plano. 100% local, sem login, sem servidores.">
+  <meta property="og:title" content="Presenciei">
+  <meta property="og:description" content="Conte seus dias no escritório, automaticamente.">
+  <meta property="og:image" content="./screenshot-hoje.png">
   <link rel="stylesheet" href="./_styles.css">
   <link rel="icon" type="image/svg+xml" href="./_logo.svg">
+  <link rel="apple-touch-icon" href="./screenshot-hoje.png">
 </head>
 <body>
   <div class="shell">
@@ -19,35 +23,73 @@
           <path d="M -66 -14 L -16 38 L 70 -54" stroke="#FFFFFF" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
       </div>
-      <h1>Presenc<span class="i">i</span>ei</h1>
-      <a href="./privacy.html">Privacidade</a>
+      <div class="wordmark">Presenc<span class="i">i</span>ei</div>
+      <nav class="brand-nav">
+        <a href="./privacy.html">Privacidade</a>
+        <a href="https://github.com/matheusrcd/onsite-tracker">GitHub</a>
+      </nav>
     </header>
 
-    <main>
-      <h1 class="hero">Conte seus dias no escritório.<br>Automaticamente.</h1>
-      <p class="lede">
-        Cadastre até 3 locais de trabalho e o Presenciei marca sua presença sozinho —
-        sem precisar abrir o app. Defina sua meta semanal ou mensal e acompanhe se você bateu.
-      </p>
-
-      <div class="features">
-        <div class="feat"><strong>📍 Até 3 locais</strong><span>Escritório, filial, casa do cliente.</span></div>
-        <div class="feat"><strong>🛰️ Check-in automático</strong><span>Region monitoring nativo em segundo plano.</span></div>
-        <div class="feat"><strong>🎯 Metas</strong><span>Semanal e mensal com progresso visual.</span></div>
-        <div class="feat"><strong>🔒 100% local</strong><span>Nada sai do seu telefone.</span></div>
+    <section class="hero">
+      <div class="hero-text">
+        <div class="badge">Em breve na App Store</div>
+        <h1>Conte seus dias no escritório.<br><span class="accent">Automaticamente.</span></h1>
+        <p class="lede">
+          Cadastre até 3 locais de trabalho. O Presenciei marca sua
+          presença sozinho — sem precisar abrir o app. Defina sua meta
+          semanal ou mensal e veja se você bateu.
+        </p>
+        <div class="cta-group">
+          <a class="cta primary" href="#" aria-disabled="true">Em breve na App Store</a>
+          <a class="cta ghost" href="./privacy.html">Como cuidamos da sua privacidade</a>
+        </div>
       </div>
+      <div class="phone-stage">
+        <div class="phone">
+          <img src="./screenshot-hoje.png" alt="Tela inicial do Presenciei com check-in feito e meta da semana em progresso">
+        </div>
+      </div>
+    </section>
 
-      <p>
-        <a class="cta" href="https://apps.apple.com/br/app/presenciei">Em breve na App Store</a>
-        <a class="cta ghost" href="./privacy.html">Política de privacidade</a>
-      </p>
-    </main>
+    <section class="features">
+      <div class="feat">
+        <div class="icon">📍</div>
+        <strong>Até 3 locais</strong>
+        <span>Escritório, filial, casa do cliente — cadastre quantos quiser usar.</span>
+      </div>
+      <div class="feat">
+        <div class="icon">🛰️</div>
+        <strong>Check-in automático</strong>
+        <span>Region monitoring nativo do iOS. Funciona com o app fechado.</span>
+      </div>
+      <div class="feat">
+        <div class="icon">🎯</div>
+        <strong>Metas semanal e mensal</strong>
+        <span>Acompanhe sua presença e receba o selo de "Meta batida".</span>
+      </div>
+      <div class="feat">
+        <div class="icon">🔒</div>
+        <strong>100% no seu telefone</strong>
+        <span>Sem login, sem servidores, sem analytics. Nada sai do device.</span>
+      </div>
+    </section>
+
+    <section class="privacy-band">
+      <div>
+        <h2>Sua localização nunca sai do seu telefone.</h2>
+        <p>
+          Não usamos servidores, não coletamos nada, não compartilhamos com
+          terceiros. A política de privacidade tem 100 linhas e é direta.
+        </p>
+      </div>
+      <a class="cta ghost" href="./privacy.html">Ler a política →</a>
+    </section>
 
     <footer class="foot">
       <a href="./privacy.html">Privacidade</a>
       <a href="https://github.com/matheusrcd/onsite-tracker/issues">Suporte</a>
-      <a href="https://github.com/matheusrcd/onsite-tracker">Código fonte</a>
-      <span style="margin-left:auto">© 2026 Presenciei</span>
+      <a href="https://github.com/matheusrcd/onsite-tracker">Código fonte (MIT)</a>
+      <span class="grow">© 2026 Presenciei · feito no Brasil 🇧🇷</span>
     </footer>
   </div>
 </body>
