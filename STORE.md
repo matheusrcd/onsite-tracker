@@ -156,11 +156,11 @@ como [previewed.app](https://previewed.app) ou Figma resolvem.
 
 ## Suporte e marketing
 
-- URL de suporte (obrigatório): `https://github.com/SEU_USUARIO/presenciei/issues`
-  (ou crie uma página simples)
-- URL de marketing (opcional): mesma página
-- URL da política de privacidade (obrigatório): hospedar o conteúdo de
-  `PRIVACY.md` em um link público (GitHub Pages, Notion público, etc.)
+- URL de suporte: <https://github.com/matheusrcd/onsite-tracker/issues>
+- URL de marketing / landing: <https://matheusrcd.github.io/onsite-tracker/>
+- URL da política de privacidade: <https://matheusrcd.github.io/onsite-tracker/privacy.html>
+
+(Tudo hospedado via GitHub Pages a partir de `docs/` no repo.)
 
 ## Account holder / Team
 

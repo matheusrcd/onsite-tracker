@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EC7000">
+  <title>Política de Privacidade — Presenciei</title>
+  <meta name="description" content="Política de Privacidade do Presenciei — nada coletado, tudo local no seu dispositivo.">
+  <link rel="stylesheet" href="./_styles.css">
+  <link rel="icon" type="image/svg+xml" href="./_logo.svg">
+</head>
+<body>
+  <div class="shell">
+    <header class="brand">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-300 -300 600 700">
+          <path d="M 0 -260 C 142 -260 254 -148 254 -6 C 254 142 110 270 0 380 C -110 270 -254 142 -254 -6 C -254 -148 -142 -260 0 -260 Z" fill="#FFFFFF"/>
+          <circle r="138" cx="0" cy="-14" fill="#003087"/>
+          <path d="M -66 -14 L -16 38 L 70 -54" stroke="#FFFFFF" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h1>Presenc<span class="i">i</span>ei</h1>
+      <a href="./">← Voltar</a>
+    </header>
+
+    <article>
+      <h1>Política de Privacidade</h1>
+      <p class="updated">Última atualização: 27 de maio de 2026</p>
+
+      <div class="callout">
+        <strong>TL;DR.</strong> O Presenciei <strong>não coleta, não transmite e não armazena</strong> seus dados em nenhum servidor.
+        Tudo o que você cadastra fica somente no seu dispositivo. Sem login, sem analytics, sem anúncios, sem compartilhamento com terceiros.
+      </div>
+
+      <h2>Quem somos</h2>
+      <p>O Presenciei é desenvolvido por <strong>Matheus Ricardo</strong>. Para dúvidas sobre esta política, abra uma issue em <a href="https://github.com/matheusrcd/onsite-tracker/issues">github.com/matheusrcd/onsite-tracker/issues</a>.</p>
+
+      <h2>Dados que o app processa</h2>
+      <table>
+        <thead><tr><th>Dado</th><th>Onde fica</th><th>Para quê</th></tr></thead>
+        <tbody>
+          <tr><td>Localização (lat/lng)</td><td>Apenas no dispositivo (memória)</td><td>Calcular distância até os locais cadastrados</td></tr>
+          <tr><td>Locais cadastrados (até 3)</td><td>AsyncStorage no dispositivo</td><td>Saber quais lugares contam como presença</td></tr>
+          <tr><td>Histórico de check-ins</td><td>AsyncStorage no dispositivo</td><td>Mostrar seu progresso</td></tr>
+          <tr><td>Metas semanal/mensal</td><td>AsyncStorage no dispositivo</td><td>Comparar com sua presença</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Nada disso é enviado para fora do seu aparelho.</strong> Não usamos servidores de backend, não usamos serviços de analytics (sem Firebase, sem Mixpanel, sem Sentry), não usamos SDKs publicitários.</p>
+
+      <h2>Localização em segundo plano</h2>
+      <p>Para contar automaticamente um dia presencial, o sistema operacional fornece <em>eventos de região</em> (geofencing) para o Presenciei quando você cruza o limite dos locais que você cadastrou. Cada evento é processado localmente e descartado em seguida.</p>
+      <p>Você pode desligar o rastreamento em segundo plano a qualquer momento pelo botão <strong>"Rastreamento em segundo plano"</strong> na tela inicial, ou revogando a permissão em Ajustes do sistema.</p>
+
+      <h2>Permissões solicitadas</h2>
+      <ul>
+        <li><strong>Localização — "Sempre"</strong> (background): necessária para detectar automaticamente sua chegada aos locais cadastrados. Sem ela, o check-in automático não funciona; o manual continua funcionando com permissão "Durante o uso".</li>
+        <li><strong>Region monitoring (geofencing)</strong>: cada local cadastrado vira uma "região" registrada no SO (até 3). O sistema só acorda o app quando você cruza a borda dessa região. Sem monitoramento contínuo, sem notificação persistente.</li>
+      </ul>
+
+      <h2>Compartilhamento com terceiros</h2>
+      <p>Nenhum. O Presenciei não compartilha, vende ou aluga dados a ninguém — porque não temos esses dados. Eles nunca saem do seu telefone.</p>
+
+      <h2>Crianças</h2>
+      <p>O app não é direcionado a crianças menores de 13 anos. Não coletamos intencionalmente dados de crianças.</p>
+
+      <h2>Direitos do titular (LGPD / GDPR)</h2>
+      <p>Como nenhum dado é coletado por nós, não há base de dados externa para solicitar acesso, exportação ou exclusão. Para apagar tudo que o app guarda, basta desinstalar o Presenciei ou usar <strong>"Apagar conteúdo e ajustes"</strong> no Ajustes do sistema → Armazenamento → Presenciei.</p>
+
+      <h2>Mudanças nesta política</h2>
+      <p>Se a política mudar, atualizaremos a data acima e divulgaremos nesta mesma URL.</p>
+
+      <h2>Contato</h2>
+      <p>Issues no repositório: <a href="https://github.com/matheusrcd/onsite-tracker/issues">github.com/matheusrcd/onsite-tracker/issues</a></p>
+    </article>
+
+    <footer class="foot">
+      <a href="./">Início</a>
+      <a href="https://github.com/matheusrcd/onsite-tracker">Repositório</a>
+      <span style="margin-left:auto">© 2026 Presenciei</span>
+    </footer>
+  </div>
+</body>
+</html>

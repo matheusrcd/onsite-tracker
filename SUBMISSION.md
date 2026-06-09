@@ -3,6 +3,105 @@
 Lista prática do que precisa estar pronto antes do upload na App Store
 Connect e no Google Play Console.
 
+> **URLs em produção:**
+> - Landing: <https://matheusrcd.github.io/onsite-tracker/>
+> - Política de privacidade: <https://matheusrcd.github.io/onsite-tracker/privacy.html>
+> - Suporte: <https://github.com/matheusrcd/onsite-tracker/issues>
+
+---
+
+## 🚀 Submissão em 10 minutos (App Store, via EAS)
+
+Pra primeira submissão, esse é o caminho mais curto. Cada passo aqui
+roda um comando ou um clique.
+
+### 0. Pré-requisitos (uma vez)
+- Apple Developer Program ativo (US$ 99/ano — enrole em
+  <https://developer.apple.com/enroll/>)
+- `npm install -g eas-cli`
+- `eas login` (cria/usa a conta Expo)
+
+### 1. Build de produção
+```bash
+eas build --platform ios --profile production
+```
+- Na primeira execução o EAS pergunta seu Apple ID e Team — login,
+  ele cria cert + provisioning profile automaticamente
+- Build roda na infra do EAS (~10-15 min), você pode fechar o terminal
+- Quando terminar o link do `.ipa` aparece no terminal e em
+  <https://expo.dev/accounts/matheusrcd/projects/presenciei/builds>
+
+### 2. Criar o app no App Store Connect (3 min)
+- <https://appstoreconnect.apple.com> → My Apps → `+` → New App
+- Platform: iOS
+- Name: **Presenciei**
+- Primary language: Portuguese (Brazil)
+- Bundle ID: escolha **com.matheusrcd.presenciei** (deve aparecer na
+  lista após o primeiro `eas build` registrar no Developer Portal)
+- SKU: `presenciei` (qualquer string única sua)
+- User Access: Full Access
+
+### 3. Submit via EAS
+```bash
+eas submit --platform ios --latest
+```
+- Pede Apple ID + senha de app (gera em
+  <https://appleid.apple.com/account/manage> → Senhas específicas
+  de app)
+- Pede o ASC App ID — pega na URL do app criado no passo 2
+- Upload de ~5 min, depois processamento da Apple (~30 min até
+  aparecer em TestFlight)
+
+### 4. Preencher metadados no ASC (10 min)
+Tudo o que precisa colar tá pronto em `STORE.md`:
+
+- **Nome / Subtítulo / Descrição / Keywords**: copia de `STORE.md`
+- **Categoria**: Produtividade / Estilo de Vida
+- **Idade**: 4+
+- **Privacy Policy URL**: `https://matheusrcd.github.io/onsite-tracker/privacy.html`
+- **Support URL**: `https://github.com/matheusrcd/onsite-tracker/issues`
+- **App Privacy** (questionário): marcar **"Data Not Collected"** —
+  literalmente isso é nossa situação
+- **Capturas de tela** (5 sugestões em `STORE.md` → "Capturas de tela"):
+  abra o app no iPhone 13/15 Pro Max e use o Screenshot do iOS (volume+power),
+  faz 5 telas (Hoje, Setup com 3 escritórios, Histórico, Metas, Adicionar)
+- **Encryption**: já configurado (`usesNonExemptEncryption: false`),
+  pula a pergunta sem fricção
+- **App Review Information**:
+  - Notes for review: copia o bloco abaixo
+  - Demo account: não precisa (sem login)
+
+### 5. Notes for review (cola no campo do ASC)
+```
+Presenciei é um app de auto-registro de presença para trabalhadores
+híbridos. O usuário cadastra 1 a 3 locais de trabalho usando a
+localização do próprio aparelho, e o app conta cada dia que ele entra
+nesses locais.
+
+Implementação:
+- Background location é usado via region monitoring nativo
+  (CLCircularRegion / startGeofencingAsync), NÃO via streaming
+  contínuo de localização. O sistema acorda o app apenas no enter
+  event.
+- Antes de pedir "Always Location", o app mostra uma tela explicando
+  o uso e pedindo consentimento explícito.
+- Nenhum dado de localização ou de uso sai do dispositivo. Não há
+  backend, analytics, SDK publicitário ou autenticação.
+- O usuário pode desligar o background tracking a qualquer momento
+  pelo toggle na tela inicial.
+- Sem permissão de background, o app degrada para check-in manual.
+```
+
+### 6. Submit for Review (1 clique)
+- Sob "1.0 Prepare for Submission" → Add for Review → Submit for Review
+- Review costuma sair em 24-48h
+
+### Pós-aprovação
+- Definir release manual ou automático
+- Apple notifica por email; app fica live em algumas horas
+
+---
+
 ## 1. Pré-requisitos de conta
 
 - [ ] Apple Developer Program ativo (US$ 99/ano)
