@@ -179,9 +179,19 @@ Pra atualizar legendas/imagens depois:
 - URL de suporte: <https://github.com/matheusrcd/onsite-tracker/issues>
 - URL de marketing / landing: <https://matheusrcd.github.io/onsite-tracker/>
 - URL da política de privacidade: <https://matheusrcd.github.io/onsite-tracker/privacy.html>
+- URL do guia iPhone (permissão "Sempre" + precisa): <https://matheusrcd.github.io/onsite-tracker/ios.html>
 - URL do guia Android (setup em segundo plano): <https://matheusrcd.github.io/onsite-tracker/android.html>
 
 (Tudo hospedado via GitHub Pages a partir de `docs/` no repo.)
+
+### App Store — trecho a incluir no final da descrição
+
+```
+📱 Primeira vez usando? Siga o guia rápido em
+https://matheusrcd.github.io/onsite-tracker/ios.html
+para deixar a localização em "Sempre" + "Precisa" — sem isso, o iOS
+não acorda o app quando você chega ao escritório com o app fechado.
+```
 
 ### Play Store — trecho a incluir no final da descrição
 
