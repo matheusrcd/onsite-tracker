@@ -85,6 +85,37 @@ const targets = [
     accentY: 894,
     ssY: 984,
   },
+  // ─────────────── Google Play (strict 9:16 = 0.5625) ───────────────
+  // Play accepts 16:9 or 9:16, each side 320–3840 px (10" tablet needs
+  // ≥1080). Since Presenciei is portrait, we render 9:16 at three
+  // resolutions matching the Play Console slots.
+  {
+    name: 'play-smartphone', w: 1080, h: 1920,
+    margin: 68,
+    headlineSize: 72, headlineLineHeight: 82,
+    subtitleSize: 30,
+    headlineY: 220, subtitleY: 470,
+    accentY: 510,
+    ssY: 570,
+  },
+  {
+    name: 'play-tablet-7', w: 1440, h: 2560,
+    margin: 90,
+    headlineSize: 96, headlineLineHeight: 110,
+    subtitleSize: 40,
+    headlineY: 294, subtitleY: 626,
+    accentY: 680,
+    ssY: 760,
+  },
+  {
+    name: 'play-tablet-10', w: 2160, h: 3840,
+    margin: 136,
+    headlineSize: 144, headlineLineHeight: 164,
+    subtitleSize: 60,
+    headlineY: 440, subtitleY: 940,
+    accentY: 1020,
+    ssY: 1140,
+  },
 ];
 
 const SCREENSHOT_BOTTOM_MARGIN = 70;

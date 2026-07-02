@@ -134,10 +134,13 @@ assets/screenshots/
 ├── source/                  ← capturas originais do iPhone 13 (1170×2532)
 ├── iphone-6.7/              ← versões "puras" 1290×2796 (sem legenda)
 ├── iphone-6.5/              ← versões "puras" 1242×2688
-├── promo-iphone-6.7/        ← com legenda em pt-BR (recomendado)
-├── promo-iphone-6.5/        ← idem para 6.5"
-├── promo-ipad-13/           ← iPad 13" 2064×2752 (exigido c/ supportsTablet)
-└── promo-ipad-12.9/         ← iPad 12.9" 2048×2732 (legado, opcional)
+├── promo-iphone-6.7/        ← App Store 6.7" com legenda em pt-BR ⭐
+├── promo-iphone-6.5/        ← App Store 6.5" com legenda
+├── promo-ipad-13/           ← App Store iPad 13" 2064×2752
+├── promo-ipad-12.9/         ← App Store iPad 12.9" 2048×2732 (legado)
+├── play-smartphone/         ← Google Play smartphone 1080×1920 (9:16) ⭐
+├── play-tablet-7/           ← Google Play tablet 7" 1440×2560 (9:16)
+└── play-tablet-10/          ← Google Play tablet 10" 2160×3840 (9:16)
 ```
 
 **Use os `promo-iphone-6.7/` na submissão** — tem o headline +
