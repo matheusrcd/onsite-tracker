@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EC7000">
+  <title>Configuração no Android — Presenciei</title>
+  <meta name="description" content="Como deixar o Presenciei funcionando em segundo plano no Android: permissões, otimização de bateria e configurações específicas de cada fabricante.">
+  <link rel="stylesheet" href="./_styles.css">
+  <link rel="icon" type="image/svg+xml" href="./_logo.svg">
+  <style>
+    /* Page-specific: step blocks + OEM cards */
+    .step {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin: 16px 0;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 640px) {
+      .step { padding: 22px 20px; grid-template-columns: 44px 1fr; gap: 14px; }
+    }
+    .step .n {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      background: var(--orange);
+      color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 24px; font-weight: 700;
+      box-shadow: 0 8px 20px -6px rgba(236, 112, 0, 0.4);
+    }
+    @media (max-width: 640px) {
+      .step .n { width: 44px; height: 44px; font-size: 20px; border-radius: 12px; }
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 4px 0 8px;
+      color: var(--ink);
+    }
+    .step p { margin: 0 0 8px; color: var(--ink); line-height: 1.55; }
+    .step .path {
+      background: var(--bg);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--ink);
+      display: inline-block;
+      margin: 4px 0;
+    }
+    .step .why {
+      color: var(--ink-soft);
+      font-size: 14px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line);
+    }
+    .oem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 16px 0 32px;
+    }
+    @media (max-width: 640px) {
+      .oem-grid { grid-template-columns: 1fr; }
+    }
+    .oem {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-soft);
+    }
+    .oem h4 {
+      font-family: var(--font-display);
+      font-size: 17px; font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0 0 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .oem h4::before {
+      content: '';
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange);
+    }
+    .oem ol { margin: 0; padding-left: 22px; color: var(--ink); font-size: 14.5px; line-height: 1.5; }
+    .oem li { margin-bottom: 6px; }
+    .oem strong { color: var(--orange); font-weight: 600; }
+    .oem .easy { color: var(--ink-soft); font-size: 14px; margin: 0; font-style: italic; }
+    .lead {
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 640px;
+      margin: 0 0 32px;
+    }
+    h2.section {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 48px 0 8px;
+      color: var(--ink);
+    }
+    p.section-sub {
+      color: var(--ink-soft);
+      margin: 0 0 20px;
+      max-width: 640px;
+    }
+    .check-box {
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin: 48px 0 24px;
+    }
+    .check-box h3 {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 600;
+      margin: 0 0 12px;
+    }
+    .check-box p, .check-box li {
+      color: rgba(255,255,255,0.86);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .check-box ul { margin: 0; padding-left: 22px; }
+    .check-box li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="brand">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-300 -300 600 700">
+          <path d="M 0 -260 C 142 -260 254 -148 254 -6 C 254 142 110 270 0 380 C -110 270 -254 142 -254 -6 C -254 -148 -142 -260 0 -260 Z" fill="#FFFFFF"/>
+          <circle r="138" cx="0" cy="-14" fill="#003087"/>
+          <path d="M -66 -14 L -16 38 L 70 -54" stroke="#FFFFFF" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="wordmark">Presenc<span class="i">i</span>ei</div>
+      <nav class="brand-nav">
+        <a href="./">Início</a>
+        <a href="./privacy.html">Privacidade</a>
+        <a href="https://github.com/matheusrcd/onsite-tracker">GitHub</a>
+      </nav>
+    </header>
+
+    <article style="max-width: 820px;">
+      <h1>Configuração no Android</h1>
+      <p class="lead">
+        No Android, deixar um app rodando em segundo plano de forma
+        confiável exige alguns ajustes de sistema. Sem eles, o Presenciei
+        vai <em>funcionar por um tempo</em> e depois parar de detectar as
+        chegadas ao escritório sem aviso. Siga os passos abaixo — leva
+        menos de 2 minutos.
+      </p>
+
+      <h2 class="section">Passos essenciais (todos os Androids)</h2>
+
+      <div class="step">
+        <div class="n">1</div>
+        <div>
+          <h3>Permitir localização "sempre" e "precisa"</h3>
+          <p>Quando o Presenciei pedir localização, escolha as duas opções:</p>
+          <span class="path">Permitir o tempo todo</span>
+          &nbsp; +
+          &nbsp;
+          <span class="path">Localização precisa</span>
+          <p class="why">
+            <strong>Por quê?</strong> Sem "o tempo todo", o Android
+            revoga a permissão quando o app não está aberto.
+            Sem "precisa", o sistema entrega uma localização com margem
+            de erro de centenas de metros — o geofence dispara em lugar errado.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="n">2</div>
+        <div>
+          <h3>Desativar otimização de bateria</h3>
+          <p>Vá em:</p>
+          <span class="path">Ajustes → Bateria → Otimização de bateria → Presenciei → <strong>Sem restrição</strong></span>
+          <p style="margin-top: 10px">Em alguns Androids o caminho é:</p>
+          <span class="path">Ajustes → Apps → Presenciei → Bateria → Sem restrição</span>
+          <p class="why">
+            <strong>Por quê?</strong> Depois de alguns minutos sem uso, o
+            Android suspende processos que não estão nessa lista. Com
+            "Sem restrição", o app fica elegível pra receber os eventos de
+            geofence a qualquer hora.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="n">3</div>
+        <div>
+          <h3>Autostart / permissão de segundo plano do fabricante</h3>
+          <p>
+            Cada fabricante Android tem seu <em>próprio</em> sistema pra
+            matar apps em segundo plano. Confira na lista abaixo o passo
+            específico do seu aparelho.
+          </p>
+          <p class="why">
+            <strong>Por quê?</strong> Samsung, Xiaomi, Oppo, Huawei e outros
+            adicionaram camadas extras de restrição em cima do Android
+            padrão pra prolongar bateria. Sem configurar, o sistema mata o
+            processo do Presenciei mesmo com os passos 1 e 2 corretos.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="section">Por fabricante</h2>
+      <p class="section-sub">
+        Encontre a seção do seu celular e siga os passos. Se sua marca
+        não estiver aqui, é porque provavelmente segue o Android padrão
+        (passos 1 e 2 bastam).
+      </p>
+
+      <div class="oem-grid">
+        <div class="oem">
+          <h4>Samsung (One UI)</h4>
+          <ol>
+            <li>Ajustes → <strong>Cuidados com o dispositivo</strong> → Bateria</li>
+            <li>Toque em <strong>Limites de uso em segundo plano</strong></li>
+            <li>Toque em <strong>Aplicativos que nunca serão suspensos</strong></li>
+            <li>Adicione <strong>Presenciei</strong> na lista</li>
+          </ol>
+        </div>
+
+        <div class="oem">
+          <h4>Xiaomi / Redmi / POCO (MIUI/HyperOS)</h4>
+          <ol>
+            <li>Ajustes → Apps → Gerenciar apps → <strong>Presenciei</strong></li>
+            <li>Ligar <strong>Início automático</strong></li>
+            <li>Ainda na tela do Presenciei, tocar em <strong>Economizador de bateria</strong> → escolher <strong>Sem restrições</strong></li>
+            <li>Ajustes → Bateria → mais opções (⋮) → <strong>Turbo do app</strong> → desligar pro Presenciei</li>
+          </ol>
+        </div>
+
+        <div class="oem">
+          <h4>Oppo / OnePlus / Realme (ColorOS)</h4>
+          <ol>
+            <li>Ajustes → Bateria → <strong>Gestão de energia do app</strong></li>
+            <li>Toque em Presenciei</li>
+            <li>Ligar <strong>Permitir atividade em segundo plano</strong> e <strong>Permitir início automático</strong></li>
+            <li>Desligar <strong>Otimização profunda</strong> (se existir)</li>
+          </ol>
+        </div>
+
+        <div class="oem">
+          <h4>Huawei / Honor (EMUI / MagicOS)</h4>
+          <ol>
+            <li>Ajustes → Apps → Presenciei → <strong>Bateria</strong></li>
+            <li>Desligar <strong>Gestão automática</strong></li>
+            <li>Ligar todas as opções manuais: <strong>Executar em segundo plano</strong>, <strong>Iniciar automaticamente</strong>, <strong>Início secundário</strong></li>
+          </ol>
+          <p class="easy" style="margin-top: 10px;">
+            ⚠️ Em Huaweis <em>sem Google Play Services</em>, o Presenciei não vai funcionar — nossa detecção usa a Geofencing API do Google.
+          </p>
+        </div>
+
+        <div class="oem">
+          <h4>Motorola / Nokia / Pixel</h4>
+          <p class="easy">
+            Rodam Android quase puro — os passos 1 e 2 acima
+            já resolvem. Não precisa de autostart adicional.
+          </p>
+        </div>
+
+        <div class="oem">
+          <h4>Vivo / iQOO (FunTouch OS / OriginOS)</h4>
+          <ol>
+            <li>iManager → Gerenciador de apps → <strong>Autostart</strong></li>
+            <li>Ligar pro Presenciei</li>
+            <li>Ajustes → Bateria → Consumo alto em segundo plano → adicionar Presenciei nas <strong>exceções</strong></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="check-box">
+        <h3>Como testar se ficou certo</h3>
+        <p>Depois de configurar:</p>
+        <ul>
+          <li>Cadastre um escritório com <strong>raio de 150 m</strong> estando lá.</li>
+          <li>Ligue o toggle de rastreamento em segundo plano no app.</li>
+          <li>Feche o Presenciei (não force stop, só volte pra home).</li>
+          <li>Saia do raio (ande uns 300 m pra longe).</li>
+          <li>Volte pro escritório. Abra o Presenciei — deve mostrar "Check-in feito hoje" automaticamente.</li>
+        </ul>
+        <p style="margin-top: 16px;">
+          Se depois de <em>alguns dias</em> parar de detectar sem você
+          mudar nada, provavelmente o passo 3 (autostart do fabricante)
+          foi resetado — algumas marcas resetam depois de atualizações
+          do sistema.
+        </p>
+      </div>
+
+      <p style="margin-top: 40px; color: var(--ink-soft); font-size: 15px;">
+        Problemas? Abra uma issue em
+        <a href="https://github.com/matheusrcd/onsite-tracker/issues">github.com/matheusrcd/onsite-tracker/issues</a>
+        com o modelo do seu aparelho e a versão do Android.
+      </p>
+
+      <a class="back-link" href="./">← Voltar para o início</a>
+    </article>
+
+    <footer class="foot">
+      <a href="./">Início</a>
+      <a href="./privacy.html">Privacidade</a>
+      <a href="https://github.com/matheusrcd/onsite-tracker">Repositório</a>
+      <span class="grow">© 2026 Presenciei</span>
+    </footer>
+  </div>
+</body>
+</html>

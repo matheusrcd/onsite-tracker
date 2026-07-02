@@ -179,8 +179,18 @@ Pra atualizar legendas/imagens depois:
 - URL de suporte: <https://github.com/matheusrcd/onsite-tracker/issues>
 - URL de marketing / landing: <https://matheusrcd.github.io/onsite-tracker/>
 - URL da política de privacidade: <https://matheusrcd.github.io/onsite-tracker/privacy.html>
+- URL do guia Android (setup em segundo plano): <https://matheusrcd.github.io/onsite-tracker/android.html>
 
 (Tudo hospedado via GitHub Pages a partir de `docs/` no repo.)
+
+### Play Store — trecho a incluir no final da descrição
+
+```
+📱 Está no Android? Antes de tudo, siga o guia rápido de 2 minutos em
+https://matheusrcd.github.io/onsite-tracker/android.html
+para desativar a otimização de bateria e o "autostart" do seu
+fabricante — sem isso, o Android suspende o app em segundo plano.
+```
 
 ## Account holder / Team
 
