@@ -68,4 +68,18 @@ const fixed = targets.map((t) =>
 for (const [svg, size, dest, flatten] of fixed) {
   await render(svg, size, dest, flatten);
 }
+
+// One-off: Google Play "Feature Graphic" — 1024×500 banner, flat white
+// bg, PNG. This one is not a square icon so it renders outside the loop.
+{
+  const svg = await readFile(path.join(src, 'play-feature-graphic.svg'));
+  await sharp(svg, { density: 240 })
+    .resize(1024, 500, { fit: 'contain', background: '#FFFFFF' })
+    .flatten({ background: '#FFFFFF' })
+    .removeAlpha()
+    .png({ compressionLevel: 9 })
+    .toFile(path.join(out, 'play-feature-graphic.png'));
+  console.log('✓ play-feature-graphic.png  (1024×500, Google Play feature graphic)');
+}
+
 console.log('Done.');

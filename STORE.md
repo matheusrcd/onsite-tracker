@@ -168,11 +168,13 @@ Pra atualizar legendas/imagens depois:
    `promos`)
 3. `npm run screenshots && npm run promo` regenera tudo
 
-## Ícone das lojas
+## Ícone e banner das lojas
 
 - `assets/app-store-icon.png` (1024×1024, sem alpha) — App Store Connect
 - `assets/play-store-icon.png` (512×512, sem alpha) — Google Play Console
-- Ambos gerados a partir de `assets/source/icon.svg` (rode `npm run assets`).
+- `assets/play-feature-graphic.png` (1024×500, sem alpha) — Google Play
+  "Recurso gráfico" (banner no topo da listagem, obrigatório)
+- Todos gerados a partir das SVGs em `assets/source/` (`npm run assets`).
 
 ## Suporte e marketing
 

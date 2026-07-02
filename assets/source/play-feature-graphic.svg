@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500" viewBox="0 0 1024 500">
+  <!-- Google Play "Feature Graphic" — banner shown at the top of the
+       app's Play Store listing. 1024×500, JPEG/PNG, ≤15 MB. Text should
+       be readable at ~150 px wide (thumbnail size) and shouldn't sit
+       too close to edges (Play sometimes crops or overlays UI). -->
+  <defs>
+    <radialGradient id="glow" cx="82%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#FFE7CC" stop-opacity="0.85"/>
+      <stop offset="72%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base white background -->
+  <rect width="1024" height="500" fill="#FFFFFF"/>
+  <!-- Warm orange radial glow bleeding in from the right -->
+  <rect width="1024" height="500" fill="url(#glow)"/>
+
+  <!-- Small brand chip + wordmark, top-left -->
+  <g transform="translate(80 90)">
+    <rect width="52" height="52" rx="13" fill="#EC7000"/>
+    <path d="M 14 27 L 23 36 L 40 18"
+          stroke="#FFFFFF" stroke-width="5.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="72" y="37"
+          font-family="Helvetica, Arial, sans-serif"
+          font-size="34" font-weight="700"
+          fill="#0F1B2D" letter-spacing="-1.2">Presenc<tspan fill="#EC7000">i</tspan>ei</text>
+  </g>
+
+  <!-- Main headline (2 lines) -->
+  <text x="80" y="252"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="54" font-weight="700"
+        fill="#0F1B2D" letter-spacing="-1.9">
+    <tspan x="80">Conte seus dias</tspan>
+    <tspan x="80" dy="64">no escritório.</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="80" y="410"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="22" font-weight="400"
+        fill="#5B6678" letter-spacing="-0.3">
+    Automaticamente. Com privacidade total.
+  </text>
+
+  <!-- Small orange accent bar under the subtitle for the brand rhythm -->
+  <rect x="80" y="437" width="52" height="5" rx="2.5" fill="#EC7000"/>
+
+  <!-- Right side: large brand pin with white check, decorative anchor.
+       Extends a couple pixels past the right edge for a "cropped" feel. -->
+  <g transform="translate(830 250) scale(0.66)">
+    <path d="
+        M 0 -260
+        C 142 -260 254 -148 254 -6
+        C 254 142 110 270 0 380
+        C -110 270 -254 142 -254 -6
+        C -254 -148 -142 -260 0 -260 Z"
+      fill="#EC7000"/>
+    <circle r="138" cx="0" cy="-14" fill="#FFFFFF"/>
+    <path d="M -66 -14 L -16 38 L 70 -54"
+          stroke="#EC7000" stroke-width="32"
+          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>
